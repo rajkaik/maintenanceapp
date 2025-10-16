@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Job Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    function App() {
+      const initialJob = () => ({
+        id: Date.now(),
+        title: '',
+        description: '',
+        status: 'Open',
+        materials: [],
+        visits: []
+      });
+
+      const [jobs, setJobs] = useState([]);
+      const [newJob, setNewJob] = useState(initialJob());
+
+      function handleAddJob() {
+        if (newJob.title.trim() === '') return;
+        setJobs([...jobs, newJob]);
+        setNewJob(initialJob());
+      }
+
+      function addMaterial(jobId, material) {
+        setJobs(jobs.map(job => {
+          if (job.id === jobId) {
+            return { ...job, materials: [...job.materials, material] };
+          }
+          return job;
+        }));
+      }
+
+      function addVisit(jobId, visit) {
+        setJobs(jobs.map(job => {
+          if (job.id === jobId) {
+            return { ...job, visits: [...job.visits, visit] };
+          }
+          return job;
+        }));
+      }
+
+      function updateStatus(jobId, status) {
+        setJobs(jobs.map(job => job.id === jobId ? { ...job, status } : job));
+      }
+
+      return (
+        <div>
+          <h1 className="text-2xl font-bold mb-4">Service Job Tracker</h1>
+          <div className="bg-white p-4 rounded shadow mb-4">
+            <h2 className="text-xl mb-2">Create New Job</h2>
+            <div className="flex flex-col gap-2">
+              <input className="border p-2 rounded" placeholder="Job title" value={newJob.title}
+                     onChange={e => setNewJob({ ...newJob, title: e.target.value })} />
+              <textarea className="border p-2 rounded" placeholder="Job description" value={newJob.description}
+                        onChange={e => setNewJob({ ...newJob, description: e.target.value })}></textarea>
+              <button className="bg-blue-500 text-white px-3 py-1 rounded"
+                      onClick={handleAddJob}>Add Job</button>
+            </div>
+          </div>
+          <div className="space-y-4">
+            {jobs.map(job => (
+              <JobCard key={job.id} job={job} onAddMaterial={addMaterial} onAddVisit={addVisit}
+                       onUpdateStatus={updateStatus} />
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    function JobCard({ job, onAddMaterial, onAddVisit, onUpdateStatus }) {
+      const [matDesc, setMatDesc] = useState('');
+      const [matQty, setMatQty] = useState('');
+      const [visitHours, setVisitHours] = useState('');
+      const [visitNotes, setVisitNotes] = useState('');
+
+      const statusOptions = ['Open', 'In Progress', 'Waiting for Customer', 'Waiting for 3rd Party', 'Waiting for Belach', 'Job Done'];
+
+      function handleAddMaterial() {
+        if (!matDesc) return;
+        onAddMaterial(job.id, { description: matDesc, qty: matQty });
+        setMatDesc('');
+        setMatQty('');
+      }
+
+      function handleAddVisit() {
+        if (!visitHours) return;
+        onAddVisit(job.id, { hours: visitHours, notes: visitNotes });
+        setVisitHours('');
+        setVisitNotes('');
+      }
+
+      return (
+        <div className="bg-white p-4 rounded shadow">
+          <div className="flex justify-between items-start">
+            <div>
+              <h3 className="font-semibold text-lg">{job.title}</h3>
+              <p className="mb-2">{job.description}</p>
+              <select className="border p-1 rounded mb-2" value={job.status}
+                      onChange={e => onUpdateStatus(job.id, e.target.value)}>
+                {statusOptions.map(status => (
+                  <option key={status} value={status}>{status}</option>
+                ))}
+              </select>
+              <div className="text-sm mb-1">Total Hours: {job.visits.reduce((sum, v) => sum + parseFloat(v.hours || 0), 0)}</div>
+            </div>
+          </div>
+          <div className="mt-3">
+            <h4 className="font-semibold mb-1">Materials</h4>
+            <ul className="list-disc ml-4 mb-2">
+              {job.materials.map((m, idx) => <li key={idx}>{m.description} ({m.qty})</li>)}
+            </ul>
+            <div className="flex gap-2 mb-2">
+              <input className="border p-1 flex-1 rounded" placeholder="Material description" value={matDesc}
+                     onChange={e => setMatDesc(e.target.value)} />
+              <input className="border p-1 w-20 rounded" placeholder="Qty" value={matQty}
+                     onChange={e => setMatQty(e.target.value)} />
+              <button className="bg-green-500 text-white px-2 py-1 rounded"
+                      onClick={handleAddMaterial}>Add</button>
+            </div>
+          </div>
+          <div className="mt-3">
+            <h4 className="font-semibold mb-1">Visits</h4>
+            <ul className="list-disc ml-4 mb-2">
+              {job.visits.map((v, idx) => <li key={idx}>{v.hours}h {v.notes && '- ' + v.notes}</li>)}
+            </ul>
+            <div className="flex flex-col gap-1 sm:flex-row sm:gap-2">
+              <input className="border p-1 rounded sm:w-24" placeholder="Hours" value={visitHours}
+                     onChange={e => setVisitHours(e.target.value)} />
+              <input className="border p-1 rounded flex-1" placeholder="Notes (optional)" value={visitNotes}
+                     onChange={e => setVisitNotes(e.target.value)} />
+              <button className="bg-purple-500 text-white px-2 py-1 rounded"
+                      onClick={handleAddVisit}>Add Visit</button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
