@@ -38,6 +38,8 @@ the pages need an internet connection until the images are copied.
 | Service & support | `services.html` | Service Three (process, FAQ) |
 | References | `references.html` | Testimonials + Our works |
 | Contact | `contact.html` | Contact One |
+| Blog | `blog.html` | Blog One / Blog Two |
+| Articles | `blog/*.html` | Blog post |
 | 404 | `404.html` | 404 |
 
 ## Edit and rebuild
@@ -60,11 +62,40 @@ node build.mjs
 | Image list (one entry per picture) | `src/images.mjs` |
 | Colours, type, spacing | `assets/css/main.css` (tokens at the top) |
 | Animations and interactions | `assets/js/main.js` |
+| Blog articles | `src/posts/*.mjs` (one file per article) |
+| Article cover drawings | `src/blog-covers.mjs` |
 
 Generated files (`*.html`, `products/*.html`, `sitemap.xml`, `robots.txt`,
 `_redirects`) are committed, so the folder can be uploaded to any static host
 as is. Products marked `draft: true` in `src/products.mjs` are kept in the
 data but not published.
+
+## Blog
+
+Each article is one file in `src/posts/`. Copy an existing article and change:
+
+| Field | What it is |
+| --- | --- |
+| `slug` | URL: `blog/<slug>.html` |
+| `title`, `seoTitle`, `description` | Headline, browser title (max ~60 characters) and meta description (max ~155) |
+| `date`, `updated` | Publication and last-change dates (`YYYY-MM-DD`) |
+| `topic`, `keywords` | Category shown on cards; search keywords |
+| `cover`, `coverAlt` | Cover drawing from `src/blog-covers.mjs` and its description |
+| `excerpt`, `takeaways` | Card summary; bullet list at the top of the article |
+| `products` | Product slugs the article links to (shown as "Related equipment" and as "Further reading" on those product pages) |
+| `body` | The article as HTML. Every `<h2 id="…">` becomes an entry in the table of contents |
+| `sources` | Numbered references shown at the end, in order of first citation; cite them in the text with the helper at the top of each article file: `${c(1)}` or `${c(2, 5)}` |
+
+`node build.mjs` adds new articles to the blog page, the homepage, the sitemap
+and the RSS feed (`blog/feed.xml`). Each article page carries `BlogPosting`
+and breadcrumb structured data for search engines. After adding an article,
+run `node tools/render-covers.mjs` to create its social preview image in
+`assets/img/blog/` (needs Playwright, installed locally or globally with
+`NODE_PATH` pointing to the global modules).
+
+The six launch articles were written from published sources, with every quote
+and figure checked against the source text. Have a Belach specialist read each
+one before the site goes live, and update `updated` when an article changes.
 
 ## Images
 

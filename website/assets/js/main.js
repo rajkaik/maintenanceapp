@@ -331,6 +331,21 @@
     });
   });
 
+
+  /* ---------- blog topic filter ---------- */
+  $$('[data-topic-filter]').forEach((bar) => {
+    const items = $$('[data-topic-item]');
+    if (!items.length) return;
+    bar.hidden = false;
+    bar.addEventListener('click', (e) => {
+      const b = e.target.closest('button[data-topic]');
+      if (!b) return;
+      const t = b.dataset.topic;
+      $$('button', bar).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      items.forEach((it) => { it.hidden = Boolean(t) && it.dataset.topicItem !== t; });
+    });
+  });
+
   /* ---------- footer year ---------- */
   $$('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
 })();
