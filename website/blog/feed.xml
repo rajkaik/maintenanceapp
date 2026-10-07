@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Belach Bioteknik blog</title>
+  <link>https://www.belach.se/blog.html</link>
+  <atom:link href="https://www.belach.se/blog/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Articles on bioreactors, scale-up, biosafety and bioprocess control from Belach Bioteknik.</description>
+  <language>en</language>
+
+</channel>
+</rss>

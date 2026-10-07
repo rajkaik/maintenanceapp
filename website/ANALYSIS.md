@@ -100,7 +100,7 @@ Status key:
 | Testimonials + Our works | References | 61 installations listed by country, interactive map (loads only after a click), customers from the logo wall |
 | Contact One | Contact | Form, address, phone, both e-mail addresses, ISO 9001 |
 | Pricing | Not used | Belach does not publish prices; the service price list PDF is linked instead |
-| Blog | Not used yet | Recommended later: application notes, installations, news (none exist today) |
+| Blog | Blog listing + 6 articles (added October 2026) | The current site has no blog. Articles on scale-up, single-use vs stainless steel, effluent decontamination, 21 CFR Part 11, parallel bioreactors and cultivated meat, each linked to the matching products |
 
 ## 4. What was fixed during the migration
 

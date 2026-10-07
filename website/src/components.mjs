@@ -8,7 +8,8 @@ const logoFile = readFileSync(new URL('logo.svg', brandDir), 'utf8');
 const logoViewBox = logoFile.match(/viewBox="([^"]+)"/)[1];
 const logoInner = logoFile.replace(/^<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
 // The logo is defined once per page as a <symbol> and referenced with <use>.
-const logoSymbol = `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="belach-logo" viewBox="${logoViewBox}">${logoInner}</symbol></svg>`;
+const markInner = readFileSync(new URL('mark.svg', brandDir), 'utf8').replace(/^<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
+const logoSymbol = `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="belach-logo" viewBox="${logoViewBox}">${logoInner}</symbol><symbol id="belach-mark" viewBox="0 0 100 120">${markInner}</symbol></svg>`;
 
 export const esc = (s = '') => String(s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -161,7 +162,7 @@ export const pageHero = ({ rel, title, lead = '', crumbs = [], image = null }) =
     </div>
   </section>`;
 
-export const layout = ({ rel = '', id, title, description, body, heroless = false, canonical = '' }) => `<!doctype html>
+export const layout = ({ rel = '', id, title, description, body, heroless = false, canonical = '', head = '', ogType = 'website', ogImage = '' }) => `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -169,11 +170,14 @@ export const layout = ({ rel = '', id, title, description, body, heroless = fals
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
   ${canonical ? `<link rel="canonical" href="${site.url}${canonical}">` : ''}
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="${ogType}">
   <meta property="og:site_name" content="${esc(site.name)}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
+  ${canonical ? `<meta property="og:url" content="${site.url}${canonical}">` : ''}
+  ${ogImage ? `<meta property="og:image" content="${site.url}${ogImage}">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <meta name="twitter:card" content="summary_large_image">` : ''}
   <meta name="theme-color" content="#000000">
+  <link rel="alternate" type="application/rss+xml" title="Belach Bioteknik blog" href="${rel}blog/feed.xml">${head ? `\n  ${head}` : ''}
   <link rel="icon" href="${rel}assets/brand/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="${rel}assets/fonts/oswald-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="${rel}assets/css/fonts.css">

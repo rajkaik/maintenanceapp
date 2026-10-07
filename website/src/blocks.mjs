@@ -133,3 +133,36 @@ export const contactForm = ({ id = 'contact-form', heading = 'Let’s get in tou
     <p class="form-note form-status" role="status" hidden></p>
   </form>`;
 };
+
+/* ---------- blog ---------- */
+import { cover } from './blog-covers.mjs';
+import { postUrl, fmtDate } from './blog.mjs';
+
+const postMeta = (p) => `<span class="post-meta"><time datetime="${p.date}">${fmtDate(p.date)}</time><span aria-hidden="true">·</span><span>${p.minutes} min read</span></span>`;
+
+export const postCard = (rel, p, { headingLevel = 3 } = {}) => `
+  <article class="post-card" data-topic-item="${esc(p.topic)}">
+    <a class="post-card__link" href="${rel}${postUrl(p)}">
+      <span class="post-card__media">${cover(p.cover)}<span class="post-card__topic">${esc(p.topic)}</span></span>
+      <span class="post-card__body">
+        ${postMeta(p)}
+        <h${headingLevel}>${esc(p.title)}</h${headingLevel}>
+        <span class="post-card__excerpt">${esc(p.excerpt)}</span>
+        <span class="post-card__more">Read article ${icons.right()}</span>
+      </span>
+    </a>
+  </article>`;
+
+export const featuredPost = (rel, p) => `
+  <article class="post-feature" data-topic-item="${esc(p.topic)}" data-reveal>
+    <a class="post-feature__link" href="${rel}${postUrl(p)}">
+      <span class="post-feature__media">${cover(p.cover)}<span class="post-card__topic">${esc(p.topic)}</span></span>
+      <span class="post-feature__body">
+        <span class="eyebrow">Latest article</span>
+        ${postMeta(p)}
+        <h3>${esc(p.title)}</h3>
+        <span class="post-card__excerpt">${esc(p.excerpt)}</span>
+        <span class="btn"><span>Read article</span><span class="btn__chip">${icons.arrow()}</span></span>
+      </span>
+    </a>
+  </article>`;

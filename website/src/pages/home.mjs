@@ -1,7 +1,8 @@
 import { site, industries, featuredProjects, logoCustomers, references } from '../site.mjs';
 import { published } from '../products.mjs';
 import { btn, icons, img, esc } from '../components.mjs';
-import { productCard, projectCard, stats, ctaBand, catLabel } from '../blocks.mjs';
+import { productCard, projectCard, stats, ctaBand, catLabel, postCard } from '../blocks.mjs';
+import { posts } from '../blog.mjs';
 import { resolve } from '../images.mjs';
 
 export const meta = {
@@ -287,6 +288,20 @@ export default function home({ rel }) {
         <div class="marquee marquee--reverse"><div class="marquee__track">${[...logoCustomers.slice(half), ...logoCustomers.slice(half)].map((n, i) => `<span class="marquee__item"${i >= logoCustomers.length - half ? ' aria-hidden="true"' : ''}>${esc(n)}</span>`).join('')}</div></div>
       </div>
     </section>
+
+    ${posts.length ? `
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--split" data-reveal>
+          <h2>Latest from <span class="hl">the blog</span></h2>
+          <div class="stack">
+            <p class="text">Engineering notes on bioreactor scale-up, equipment choices, biosafety and process control.</p>
+            ${btn({ href: `${rel}blog.html`, label: 'All articles' })}
+          </div>
+        </div>
+        <div class="post-grid">${posts.slice(0, 3).map((p) => postCard(rel, p)).join('')}</div>
+      </div>
+    </section>` : ''}
 
     ${ctaBand(rel)}
   `;

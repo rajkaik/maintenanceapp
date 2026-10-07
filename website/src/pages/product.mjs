@@ -2,6 +2,7 @@
 import { productCategories, byCategory } from '../products.mjs';
 import { btn, icons, img, esc } from '../components.mjs';
 import { productCard, ctaBand, contactForm } from '../blocks.mjs';
+import { postsForProduct, postUrl } from '../blog.mjs';
 import { resolve } from '../images.mjs';
 
 const strip = (s) => s.replace(/<[^>]+>/g, '');
@@ -76,6 +77,16 @@ export default function product({ rel, product: p }) {
         <div class="feature-grid${p.sections.length === 1 ? ' feature-grid--single' : ''}">
           ${p.sections.map(section).join('')}
         </div>
+      </div>
+    </section>` : ''}
+
+    ${postsForProduct(p.slug).length ? `
+    <section class="section section--tight">
+      <div class="container reading">
+        <h2 class="h4">Further reading</h2>
+        <ul class="reading__list" role="list">
+          ${postsForProduct(p.slug).map((x) => `<li><a href="${rel}${postUrl(x)}"><span class="reading__topic">${esc(x.topic)}</span><span class="reading__title">${esc(x.title)}</span><span class="reading__more">${x.minutes} min read ${icons.right()}</span></a></li>`).join('')}
+        </ul>
       </div>
     </section>` : ''}
 

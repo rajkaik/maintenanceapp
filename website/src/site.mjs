@@ -49,6 +49,7 @@ export const nav = [
   { id: 'products', label: 'Products', href: 'products.html', children: categories.map((c) => ({ ...c, id: c.id === 'rental' ? 'rental' : `cat-${c.id}` })) },
   { id: 'services', label: 'Service & support', href: 'services.html' },
   { id: 'references', label: 'References', href: 'references.html' },
+  { id: 'blog', label: 'Blog', href: 'blog.html' },
   { id: 'contact', label: 'Contact', href: 'contact.html' },
 ];
 
@@ -59,6 +60,7 @@ site.footerNav = [
   { label: 'Rental', href: 'rental.html' },
   { label: 'Service', href: 'services.html' },
   { label: 'References', href: 'references.html' },
+  { label: 'Blog', href: 'blog.html' },
   { label: 'Contact', href: 'contact.html' },
 ];
 
