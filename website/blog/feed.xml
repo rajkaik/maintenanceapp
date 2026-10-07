@@ -22,5 +22,13 @@
     <category>Process development</category>
     <description>How parallel bioreactors and design of experiments (DoE) speed up strain screening and bioprocess development, and support QbD and scale-down models.</description>
   </item>
+  <item>
+    <title>21 CFR Part 11 compliance and data integrity for bioreactor control software</title>
+    <link>https://www.belach.se/blog/21-cfr-part-11-compliance-bioreactor-software.html</link>
+    <guid isPermaLink="true">https://www.belach.se/blog/21-cfr-part-11-compliance-bioreactor-software.html</guid>
+    <pubDate>Wed, 07 Oct 2026 08:00:00 GMT</pubDate>
+    <category>Compliance</category>
+    <description>What 21 CFR Part 11 compliance means for bioreactor software: scope, audit trails, e-signatures, ALCOA+, EU Annex 11 and a practical evaluation checklist.</description>
+  </item>
 </channel>
 </rss>
