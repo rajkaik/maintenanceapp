@@ -21,7 +21,7 @@ export default function home({ rel }) {
   const solutions = [
     { title: 'Bioreactors', text: 'Glass and stainless-steel bioreactors for microbial and cell cultures, from 0.2 L multi-parallel lab systems to 1000 L in-situ sterilizable production plants.', href: 'products.html#bioreactors', link: 'All bioreactors', media: 'photo300L' },
     { title: 'Decontamination systems', text: 'Effluent decontamination systems for BSL 1–3 facilities: batch heat treatment at 120–140 °C with F₀ monitoring, from 42 L sink units to 2000 L dual-vessel plants.', href: 'products.html#decontamination', link: 'All decontamination systems', media: 'externalEds', cutout: true },
-    { title: 'Bioprocess control systems', text: 'BioPhantom© SCADA software, Bio-Pilot plant control and Bel-IoT cloud access. One platform from lab reactor to production, compliant with FDA 21 CFR Part 11.', href: 'products.html#control', link: 'All control systems', media: 'bioPhantom' },
+    { title: 'Bioprocess control systems', text: 'BioPhantom© SCADA software, Bio-Pilot plant control and Bel-IoT cloud access. One platform from lab reactor to production, designed to support FDA 21 CFR Part 11 compliance.', href: 'products.html#control', link: 'All control systems', media: 'bioPhantom' },
     { title: 'Bioreactor rental', text: 'Lease a tested stainless-steel bioreactor, equipped with new instruments, for a specific period on your own site, without a large down payment.', href: 'rental.html', link: 'Rental bioreactors', media: 'rental100', cutout: true },
     { title: 'Service & maintenance', text: 'Yearly maintenance packages, calibration, spare parts, troubleshooting and re-automation of existing vessels with modern BioPhantom© control units.', href: 'services.html', link: 'Service & support', media: 'photoMVC' },
   ];
@@ -110,7 +110,7 @@ export default function home({ rel }) {
               <li>ISO 9001 certified</li>
               <li>Customized to each client</li>
               <li>From 0.2 L to 1000 L</li>
-              <li>FDA 21 CFR Part 11 compliant software</li>
+              <li>Software designed to support FDA 21 CFR Part 11</li>
               <li>Glass and stainless steel</li>
               <li>Maintenance and spare parts</li>
             </ul>
