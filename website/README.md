@@ -84,13 +84,18 @@ Each article is one file in `src/posts/`. Copy an existing article and change:
 | `excerpt`, `takeaways` | Card summary; bullet list at the top of the article |
 | `products` | Product slugs the article links to (shown as "Related equipment" and as "Further reading" on those product pages) |
 | `body` | The article as HTML. Every `<h2 id="…">` becomes an entry in the table of contents |
-| `sources` | Numbered references shown at the end; cite them in the text as `<sup><a href="#src-1">1</a></sup>` |
+| `sources` | Numbered references shown at the end, in order of first citation; cite them in the text with the helper at the top of each article file: `${c(1)}` or `${c(2, 5)}` |
 
 `node build.mjs` adds new articles to the blog page, the homepage, the sitemap
 and the RSS feed (`blog/feed.xml`). Each article page carries `BlogPosting`
 and breadcrumb structured data for search engines. After adding an article,
 run `node tools/render-covers.mjs` to create its social preview image in
-`assets/img/blog/` (needs Playwright).
+`assets/img/blog/` (needs Playwright, installed locally or globally with
+`NODE_PATH` pointing to the global modules).
+
+The six launch articles were written from published sources, with every quote
+and figure checked against the source text. Have a Belach specialist read each
+one before the site goes live, and update `updated` when an article changes.
 
 ## Images
 

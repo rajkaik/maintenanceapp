@@ -69,7 +69,7 @@ const art = {
       <path d="M790 550v34M1010 550v34" ${line}/>
       <path d="M770 260H1030" ${thin} stroke-dasharray="1 9"/>
       <circle cx="1060" cy="300" r="7" fill="${A}"/>`;
-    return [label('EQUIPMENT CHOICE'), detail('Single-use bag  ·  stainless steel, SIP'), bag, steel,
+    return [label('EQUIPMENT CHOICE'), detail('Single-use bag  ·  stainless steel, SIP', 72, 600), bag, steel,
       `<text x="640" y="380" class="cover__vs" text-anchor="middle">VS</text>`].join('');
   },
 
@@ -79,7 +79,7 @@ const art = {
       <path d="M210 210C240 170 430 170 460 210" ${line}/>
       <path d="M196 260h278M196 300h278M196 340h278M196 380h278M196 420h278" ${thin}/>
       <path d="M335 175v-40M300 135h70" ${line}/>
-      <circle cx="335" cy="565" r="9" fill="${A}"/><path d="M335 510v46" ${line}/>`;
+      <circle cx="335" cy="534" r="8" fill="${A}"/><path d="M335 510v16" ${line}/>`;
     const ox = 560;
     const oy = 520;
     const curve = `M${ox} ${oy - 20}C${ox + 80} ${oy - 30} ${ox + 120} ${oy - 250} ${ox + 200} ${oy - 290}H${ox + 420}C${ox + 470} ${oy - 290} ${ox + 520} ${oy - 60} ${ox + 580} ${oy - 40}`;
@@ -90,7 +90,7 @@ const art = {
       <text x="${ox + 14}" y="${oy - 304}" class="cover__small">121.1 °C</text>
       <text x="${ox + 310}" y="${oy - 130}" class="cover__num" text-anchor="middle">F₀</text>
       <text x="${ox + 600}" y="${oy + 40}" class="cover__small" text-anchor="end">time</text>`;
-    return [label('BIOSAFETY'), detail('Thermal inactivation · BSL-2 / BSL-3'), tank, chart].join('');
+    return [label('BIOSAFETY'), detail('Thermal inactivation · BSL-2 / BSL-3', 72, 594), tank, chart].join('');
   },
 
   part11: () => {
@@ -123,7 +123,7 @@ const art = {
       <path d="${[edge(6, 7), edge(7, 4), edge(3, 7)].join('')}" ${thin} stroke-dasharray="4 8"/>
       ${P.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="10" fill="${A}"/>`).join('')}
       <circle cx="${(P[0][0] + P[6][0]) / 2}" cy="${(P[0][1] + P[6][1]) / 2}" r="10" fill="${W}"/>`;
-    return [label('PROCESS DEVELOPMENT'), detail('6 parallel runs · design of experiments'), v, cube].join('');
+    return [label('PROCESS DEVELOPMENT'), detail('6 parallel runs · design of experiments', 72, 600), v, cube].join('');
   },
 
   'cultivated-meat': () => {

@@ -15,6 +15,14 @@
     <description>Why bioreactor scale-up fails and how to plan it: P/V, kLa, tip speed, mixing time, CO2 and heat removal, plus scale-down models from lab to production.</description>
   </item>
   <item>
+    <title>Single-use vs stainless steel bioreactors: how to choose</title>
+    <link>https://www.belach.se/blog/single-use-vs-stainless-steel-bioreactors.html</link>
+    <guid isPermaLink="true">https://www.belach.se/blog/single-use-vs-stainless-steel-bioreactors.html</guid>
+    <pubDate>Wed, 07 Oct 2026 08:00:00 GMT</pubDate>
+    <category>Equipment</category>
+    <description>Single-use vs stainless steel bioreactor: compare capital and running costs, changeover, scale, microbial limits, leachables and the latest carbon data.</description>
+  </item>
+  <item>
     <title>Parallel bioreactors and design of experiments: faster bioprocess development</title>
     <link>https://www.belach.se/blog/parallel-bioreactors-design-of-experiments.html</link>
     <guid isPermaLink="true">https://www.belach.se/blog/parallel-bioreactors-design-of-experiments.html</guid>
@@ -23,12 +31,28 @@
     <description>How parallel bioreactors and design of experiments (DoE) speed up strain screening and bioprocess development, and support QbD and scale-down models.</description>
   </item>
   <item>
+    <title>Effluent decontamination systems: a guide for BSL-2/3 labs and vaccine production</title>
+    <link>https://www.belach.se/blog/effluent-decontamination-systems.html</link>
+    <guid isPermaLink="true">https://www.belach.se/blog/effluent-decontamination-systems.html</guid>
+    <pubDate>Wed, 07 Oct 2026 08:00:00 GMT</pubDate>
+    <category>Biosafety</category>
+    <description>How an effluent decontamination system works, what BMBL, WHO, EU and Swedish rules actually require, what F0 means, and how to validate and design one.</description>
+  </item>
+  <item>
     <title>21 CFR Part 11 compliance and data integrity for bioreactor control software</title>
     <link>https://www.belach.se/blog/21-cfr-part-11-compliance-bioreactor-software.html</link>
     <guid isPermaLink="true">https://www.belach.se/blog/21-cfr-part-11-compliance-bioreactor-software.html</guid>
     <pubDate>Wed, 07 Oct 2026 08:00:00 GMT</pubDate>
     <category>Compliance</category>
     <description>What 21 CFR Part 11 compliance means for bioreactor software: scope, audit trails, e-signatures, ALCOA+, EU Annex 11 and a practical evaluation checklist.</description>
+  </item>
+  <item>
+    <title>Cultivated meat bioreactors and the scale-up challenge</title>
+    <link>https://www.belach.se/blog/cultivated-meat-bioreactor-scale-up.html</link>
+    <guid isPermaLink="true">https://www.belach.se/blog/cultivated-meat-bioreactor-scale-up.html</guid>
+    <pubDate>Wed, 07 Oct 2026 08:00:00 GMT</pubDate>
+    <category>Cultivated meat</category>
+    <description>What it takes to scale up a cultivated meat bioreactor: reactor formats, cell density, cost models, food-grade design, sterility and 2020–2026 regulation.</description>
   </item>
 </channel>
 </rss>
