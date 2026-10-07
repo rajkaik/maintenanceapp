@@ -6,6 +6,21 @@
   <atom:link href="https://www.belach.se/blog/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles on bioreactors, scale-up, biosafety and bioprocess control from Belach Bioteknik.</description>
   <language>en</language>
-
+  <item>
+    <title>Bioreactor scale-up: from benchtop to production scale</title>
+    <link>https://www.belach.se/blog/bioreactor-scale-up.html</link>
+    <guid isPermaLink="true">https://www.belach.se/blog/bioreactor-scale-up.html</guid>
+    <pubDate>Wed, 07 Oct 2026 08:00:00 GMT</pubDate>
+    <category>Scale-up</category>
+    <description>Why bioreactor scale-up fails and how to plan it: P/V, kLa, tip speed, mixing time, CO2 and heat removal, plus scale-down models from lab to production.</description>
+  </item>
+  <item>
+    <title>Parallel bioreactors and design of experiments: faster bioprocess development</title>
+    <link>https://www.belach.se/blog/parallel-bioreactors-design-of-experiments.html</link>
+    <guid isPermaLink="true">https://www.belach.se/blog/parallel-bioreactors-design-of-experiments.html</guid>
+    <pubDate>Wed, 07 Oct 2026 08:00:00 GMT</pubDate>
+    <category>Process development</category>
+    <description>How parallel bioreactors and design of experiments (DoE) speed up strain screening and bioprocess development, and support QbD and scale-down models.</description>
+  </item>
 </channel>
 </rss>

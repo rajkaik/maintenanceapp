@@ -5,13 +5,17 @@
 //
 // Needs Playwright with Chromium: npm i -D playwright && npx playwright install chromium
 import { mkdir, readFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
 import { posts } from '../src/blog.mjs';
 import { cover } from '../src/blog-covers.mjs';
 
+// A local install is found by import(); a global one via require(), which honours NODE_PATH.
 let chromium;
 try { ({ chromium } = await import('playwright')); } catch {
-  console.error('Playwright is not installed. Run: npm i -D playwright && npx playwright install chromium');
-  process.exit(1);
+  try { ({ chromium } = createRequire(import.meta.url)('playwright')); } catch {
+    console.error('Playwright is not installed. Run: npm i -D playwright && npx playwright install chromium');
+    process.exit(1);
+  }
 }
 const root = new URL('../', import.meta.url);
 await mkdir(new URL('assets/img/blog/', root), { recursive: true });
