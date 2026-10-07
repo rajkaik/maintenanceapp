@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bioreactor URS Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 32 32" width="34" height="34" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 5H24V21A8 5 0 0 1 8 21Z"/>
+          <path d="M16 1V20"/>
+          <path d="M12 12H20M12 19H20"/>
+        </svg>
+        <div>
+          <p class="brand-kicker">User Requirements Specification</p>
+          <h1 class="brand-title">Bioreactor URS Builder</h1>
+        </div>
+      </div>
+      <div class="tabs" role="tablist" aria-label="View">
+        <button type="button" class="tab" role="tab" id="tab-form" data-view="form" aria-selected="true">Questionnaire</button>
+        <button type="button" class="tab" role="tab" id="tab-urs" data-view="urs" aria-selected="false">URS document</button>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn" data-action="download">Download answers</button>
+        <label class="btn" for="file-load">Load answers</label>
+        <input type="file" id="file-load" class="visually-hidden" accept=".json,application/json">
+        <button type="button" class="btn" data-action="print">Print / PDF</button>
+        <button type="button" class="btn btn-quiet" data-action="reset" id="btn-reset">Reset</button>
+      </div>
+    </div>
+    <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="status-row">
+      <span id="progress-text"></span>
+      <span id="save-status"></span>
+    </div>
+  </header>
+
+  <main id="view-form" class="layout">
+    <nav class="sidenav" id="sidenav" aria-label="Sections"></nav>
+    <section class="content" id="form-content" aria-live="off"></section>
+  </main>
+
+  <main id="view-urs" class="urs-wrap" hidden>
+    <article class="urs-doc" id="urs-doc"></article>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <noscript><p class="noscript">This questionnaire needs JavaScript enabled.</p></noscript>
+
+  <script src="data/standards.js"></script>
+  <script src="data/bioreactor.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
